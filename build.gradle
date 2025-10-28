@@ -35,6 +35,9 @@ dependencies {
     implementation  'jakarta.transaction:jakarta.transaction-api:2.0.1'
     developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
     //testImplementation 'org.testcontainers:postgresql:1.21.3'
+    implementation 'party.iroiro.luajava:luajava:4.0.2'
+    implementation 'party.iroiro.luajava:luajit:4.0.2'
+    runtimeOnly 'party.iroiro.luajava:luajit-platform:4.0.2:natives-desktop'
 
 }
 
