@@ -35,4 +35,11 @@ public class MainController {
         // This returns a JSON or XML with the users
         return userRepository.findAll();
     }
+
+    @RequestMapping(value = {"/", "/{path:[^\\.]*}"})
+    public String redirect() {
+        return "forward:/index.html";
+    }
 }
+
+

@@ -1,3 +1,5 @@
+
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.5.7'
@@ -43,3 +45,22 @@ tasks.named('test') {
 tasks.named("bootBuildImage") {
     imageName = "markov-tool"
 }
+
+tasks.register('processFrontendResources', Copy) {
+    def frontendProjectBuildDir = project(":frontend").layout.buildDirectory
+    def frontendResourcesDir = project.layout.buildDirectory.dir("resources/main/public")
+
+    group = "Frontend"
+    description = "Process frontend resources"
+    dependsOn(":frontend:assembleFrontend")
+
+    from(frontendProjectBuildDir)
+    into(frontendResourcesDir)
+}
+
+tasks.named('processResources') {
+    dependsOn("processFrontendResources")
+}
+
+
+
